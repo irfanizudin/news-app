@@ -28,7 +28,7 @@ const Layout = ({ children, title, description }) => {
         <meta property="twitter:image" content="" />
       </Head>
       <Header buttonText={btnHeader} buttonLink={btnHeader} />
-      <main className="w-full min-h-screen">{children}</main>
+      <main className="w-full min-h-screen bg-white flex justify-center">{children}</main>
       <Footer />
     </div>
   );

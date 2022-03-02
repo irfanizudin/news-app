@@ -5,7 +5,7 @@ const Button = ({ children, className, link }) => {
   return (
     <button
       onClick={() => router.push(`/${link}`)}
-      className={`${className} text-lg font-semibold capitalize`}
+      className={`${className} text-base font-medium capitalize`}
     >
       {children}
     </button>

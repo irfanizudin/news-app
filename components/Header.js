@@ -7,7 +7,9 @@ const Header = ({ buttonText, buttonLink }) => {
       <Link href="/">
         <a className="text-lg font-bold">News App</a>
       </Link>
-      <Button link={buttonLink}>{buttonText}</Button>
+      <Button className="text-blue border rounded-lg px-[10px] py-[6px]" link={buttonLink}>
+        {buttonText}
+      </Button>
     </div>
   );
 };
