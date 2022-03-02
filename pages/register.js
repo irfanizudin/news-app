@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import Input from "../components/Input";
@@ -20,13 +21,14 @@ const register = () => {
     },
   ];
 
-  const { input, setInput } = useContext(AppContext);
+  const { input, setInput, setShowAlert } = useContext(AppContext);
 
   const router = useRouter();
 
   const handleRegister = (e) => {
     e.preventDefault();
     console.log(input);
+    localStorage.setItem("dataUser", JSON.stringify(input));
     setInput({
       first_name: "",
       last_name: "",
@@ -37,6 +39,7 @@ const register = () => {
       city: "",
     });
     router.push("/login");
+    setShowAlert({ registration: true });
   };
 
   const cities = region.filter((region) => region.province === input.province);
@@ -93,6 +96,12 @@ const register = () => {
             />
           </div>
         </form>
+        <p className="text-sm text-center mt-3">
+          Already a Member ?{" "}
+          <Link href="/login">
+            <a className="text-blue underline">Login Now</a>
+          </Link>
+        </p>
       </div>
     </Layout>
   );

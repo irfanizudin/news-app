@@ -12,6 +12,11 @@ export const AppProvider = ({ children }) => {
     province: "",
     city: "",
   });
+  const [showAlert, setShowAlert] = useState({ login: false, registration: false });
 
-  return <AppContext.Provider value={{ input, setInput }}>{children}</AppContext.Provider>;
+  return (
+    <AppContext.Provider value={{ input, setInput, showAlert, setShowAlert }}>
+      {children}
+    </AppContext.Provider>
+  );
 };
