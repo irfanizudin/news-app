@@ -29,6 +29,7 @@ const register = () => {
     e.preventDefault();
     console.log(input);
     localStorage.setItem("dataUser", JSON.stringify(input));
+    localStorage.setItem("login", JSON.stringify({ status: false }));
     setInput({
       first_name: "",
       last_name: "",
@@ -92,12 +93,12 @@ const register = () => {
             <Input
               type="submit"
               value="Register"
-              className="text-white bg-blue border-blue focus:border-blue focus:ring-1 cursor-pointer"
+              className="text-white bg-blue !border-blue cursor-pointer"
             />
           </div>
         </form>
         <p className="text-sm text-center mt-3">
-          Already a Member ?{" "}
+          Already have account ?{" "}
           <Link href="/login">
             <a className="text-blue underline">Login Now</a>
           </Link>

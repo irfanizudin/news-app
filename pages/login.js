@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import Alert from "../components/Alert";
 import Input from "../components/Input";
 import Layout from "../components/Layout";
@@ -16,9 +16,6 @@ const login = () => {
 
     if (input.email === email && input.password === password) {
       router.push("/");
-      console.log("Login sukses");
-    } else {
-      console.log("Login gagal");
     }
     setInput({
       first_name: "",
@@ -29,6 +26,7 @@ const login = () => {
       province: "",
       city: "",
     });
+    localStorage.setItem("login", JSON.stringify({ status: true }));
     setShowAlert({ login: true });
   };
 
@@ -58,12 +56,12 @@ const login = () => {
             <Input
               type="submit"
               value="Login"
-              className="text-white bg-blue border-blue focus:border-blue focus:ring-1 cursor-pointer"
+              className="text-white bg-blue !border-blue cursor-pointer"
             />
           </div>
         </form>
         <p className="text-sm text-center mt-3">
-          Not a Member ?{" "}
+          Don't have account ?{" "}
           <Link href="/register">
             <a className="text-blue underline">Register Now</a>
           </Link>

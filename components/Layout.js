@@ -1,13 +1,8 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
 import Footer from "./Footer";
 import Header from "./Header";
 
 const Layout = ({ children, title, description }) => {
-  const { pathname } = useRouter();
-  const route = pathname.split("/")[1];
-  const btnHeader = (route === "login" && "register") || (route === "register" && "login");
-
   return (
     <div>
       <Head>
@@ -27,7 +22,7 @@ const Layout = ({ children, title, description }) => {
         <meta property="twitter:description" content={description} />
         <meta property="twitter:image" content="" />
       </Head>
-      <Header buttonText={btnHeader} buttonLink={btnHeader} />
+      <Header />
       <main className="w-full min-h-screen bg-white flex justify-center">{children}</main>
       <Footer />
     </div>
