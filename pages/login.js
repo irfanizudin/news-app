@@ -12,11 +12,21 @@ const login = () => {
   const router = useRouter();
   const handleLogin = (e) => {
     e.preventDefault();
-    const { email, password } = JSON.parse(localStorage.getItem("dataUser"));
 
-    if (input.email === email && input.password === password) {
-      router.push("/");
+    if (localStorage.getItem("dataUser") !== null) {
+      const { email, password } = JSON.parse(localStorage.getItem("dataUser"));
+      if (input.email === email && input.password === password) {
+        localStorage.setItem("loginStatus", true);
+        router.push("/");
+      } else {
+        console.log("Email atau password salah");
+        setShowAlert({ login: true });
+      }
+    } else {
+      console.log("Akun belum terdaftar");
+      setShowAlert({ login: true });
     }
+
     setInput({
       first_name: "",
       last_name: "",
@@ -26,8 +36,6 @@ const login = () => {
       province: "",
       city: "",
     });
-    localStorage.setItem("login", JSON.stringify({ status: true }));
-    setShowAlert({ login: true });
   };
 
   return (

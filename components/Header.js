@@ -12,8 +12,13 @@ const Header = () => {
   const [username, setUsername] = useState();
 
   useEffect(() => {
-    const { first_name, last_name } = JSON.parse(localStorage.getItem("dataUser"));
-    setUsername(first_name + " " + last_name);
+    if (
+      localStorage.getItem("dataUser") !== null ||
+      localStorage.getItem("loginStatus") === !null
+    ) {
+      const { first_name, last_name } = JSON.parse(localStorage.getItem("dataUser"));
+      setUsername(first_name + " " + last_name);
+    }
     return () => {};
   }, []);
 
