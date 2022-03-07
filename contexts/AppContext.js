@@ -12,7 +12,13 @@ export const AppProvider = ({ children }) => {
     province: "",
     city: "",
   });
-  const [showAlert, setShowAlert] = useState({ login: false, registration: false });
+  const [showAlert, setShowAlert] = useState({
+    login: false,
+    registration: false,
+    logout: false,
+    wrongLogin: false,
+    notRegistered: false,
+  });
 
   return (
     <AppContext.Provider value={{ input, setInput, showAlert, setShowAlert }}>

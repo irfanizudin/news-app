@@ -1,15 +1,19 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Button from "./Button";
-import { MdExpandMore } from "react-icons/md";
+import { MdLogout } from "react-icons/md";
+import { AppContext } from "../contexts/AppContext";
 
 const Header = () => {
   const { pathname } = useRouter();
+  const router = useRouter();
+
   const route = pathname.split("/")[1];
   const btnHeader = (route === "login" && "register") || (route === "register" && "login");
 
   const [username, setUsername] = useState();
+  const { setShowAlert } = useContext(AppContext);
 
   useEffect(() => {
     if (
@@ -22,8 +26,14 @@ const Header = () => {
     return () => {};
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem("loginStatus");
+    router.push("/login");
+    setShowAlert({ logout: true });
+  };
+
   return (
-    <div className="w-full h-[70px] bg-white border-b border-black/25 flex items-center justify-between px-[80px]">
+    <div className="w-full h-[70px] bg-white border-b border-black/25 flex items-center justify-between px-[20px] md:px-[80px]">
       <Link href="/">
         <a className="text-lg font-bold">News App</a>
       </Link>
@@ -32,9 +42,14 @@ const Header = () => {
           {btnHeader}
         </Button>
       ) : (
-        <div className="text-sm font-medium capitalize rounded-lg px-[10px] py-[6px] bg-gray flex items-center cursor-pointer">
-          {username}
-          <MdExpandMore className="ml-1 text-black/50" />
+        <div className="flex">
+          <div className="text-sm font-medium capitalize flex items-center">Hi, {username}</div>
+          <div
+            onClick={handleLogout}
+            className="px-[10px] py-[6px] bg-gray rounded-lg ml-3 cursor-pointer"
+          >
+            <MdLogout />
+          </div>
         </div>
       )}
     </div>

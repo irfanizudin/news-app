@@ -6,7 +6,13 @@ const Alert = ({ message, status }) => {
 
   useEffect(() => {
     setTimeout(() => {
-      setShowAlert({ login: false, registration: false });
+      setShowAlert({
+        login: false,
+        registration: false,
+        logout: false,
+        wrongLogin: false,
+        notRegistered: false,
+      });
     }, 3000);
     return () => {};
   }, []);

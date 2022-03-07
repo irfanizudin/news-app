@@ -17,14 +17,17 @@ const login = () => {
       const { email, password } = JSON.parse(localStorage.getItem("dataUser"));
       if (input.email === email && input.password === password) {
         localStorage.setItem("loginStatus", true);
+        setShowAlert({ login: true });
         router.push("/");
       } else {
+        setShowAlert({ wrongLogin: true });
         console.log("Email atau password salah");
-        setShowAlert({ login: true });
+        console.log("wrongLogin", showAlert.wrongLogin);
       }
     } else {
+      setShowAlert({ notRegistered: true });
       console.log("Akun belum terdaftar");
-      setShowAlert({ login: true });
+      console.log("not registerd ", showAlert.notRegistered);
     }
 
     setInput({
@@ -43,6 +46,11 @@ const login = () => {
       <div className="h-full flex flex-col justify-center mt-[80px]">
         {showAlert.login && <Alert message="Login failed!" status="failed" />}
         {showAlert.registration && <Alert message="Registration success!" status="success" />}
+        {showAlert.logout && <Alert message="Logout success!" status="success" />}
+        {showAlert.wrongLogin && <Alert message="Email or password incorrect!" status="failed" />}
+        {showAlert.notRegistered && (
+          <Alert message="Your account is not registered!" status="failed" />
+        )}
 
         <h1 className="text-2xl font-bold text-center">Login to News App</h1>
         <form onSubmit={handleLogin}>

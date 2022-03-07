@@ -29,7 +29,6 @@ const register = () => {
     e.preventDefault();
     console.log(input);
     localStorage.setItem("dataUser", JSON.stringify(input));
-    // localStorage.setItem("login", JSON.stringify({ status: false }));
     setInput({
       first_name: "",
       last_name: "",
