@@ -22,7 +22,7 @@ const Home = ({ posts }) => {
   return (
     <Layout title="News App" description="News App by Irfan Izudin">
       {showAlert.login && <Alert message="Login Success!" status="success" />}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-[80px] mb-[50px] gap-10">
+      <div className="grid place-items-center grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-[30px] md:mt-[80px] mb-[50px] gap-10 px-[20px] sm:px-[50px]">
         {items &&
           items.map((item, index) => {
             return <Card key={index} post={item} />;
