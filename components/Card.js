@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Card = ({ post }) => {
   const { urlToImage, title, description } = post;
-  const slug = title.split(" ").join("-").toLowerCase();
+  const slug = encodeURIComponent(title.split(" ").join("-").toLowerCase());
 
   return (
     <Link href={`post/${slug}`}>

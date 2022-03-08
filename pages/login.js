@@ -21,13 +21,9 @@ const login = () => {
         router.push("/");
       } else {
         setShowAlert({ wrongLogin: true });
-        console.log("Email atau password salah");
-        console.log("wrongLogin", showAlert.wrongLogin);
       }
     } else {
       setShowAlert({ notRegistered: true });
-      console.log("Akun belum terdaftar");
-      console.log("not registerd ", showAlert.notRegistered);
     }
 
     setInput({

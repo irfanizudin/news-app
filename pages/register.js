@@ -27,7 +27,6 @@ const register = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    console.log(input);
     localStorage.setItem("dataUser", JSON.stringify(input));
     setInput({
       first_name: "",
