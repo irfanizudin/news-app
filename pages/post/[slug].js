@@ -40,7 +40,7 @@ export const getServerSideProps = async (query) => {
   const res = await fetch("https://saurav.tech/NewsAPI/everything/cnn.json");
   const posts = await res.json();
   const filterPost = posts.articles.filter(
-    (post) => post.title.split(" ").join("-").toLowerCase() === slug
+    (post) => post.title?.split(" ").join("-").toLowerCase() === slug
   );
   return {
     props: { filterPost },

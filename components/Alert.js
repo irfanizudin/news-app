@@ -15,13 +15,13 @@ const Alert = ({ message, status }) => {
       });
     }, 3000);
     return () => {};
-  }, []);
+  }, [setShowAlert]);
 
   return (
     <div
       className={`${status === "success" && "text-green-700 bg-green-100"} ${
         status === "failed" && "text-red-700 bg-red-100"
-      } absolute top-20 right-1/2 translate-x-1/2 px-4 py-3 leading-normal  rounded-lg`}
+      } absolute top-20 right-1/2 translate-x-1/2 px-4 py-3 leading-normal rounded-lg z-10`}
       role="alert"
     >
       {message}

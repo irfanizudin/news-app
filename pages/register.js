@@ -6,7 +6,7 @@ import Layout from "../components/Layout";
 import Select from "../components/Select";
 import { AppContext } from "../contexts/AppContext";
 
-const register = () => {
+const Register = () => {
   const gender = ["male", "female"];
   const province = ["Jawa Barat", "Jawa Timur"];
 
@@ -51,7 +51,7 @@ const register = () => {
 
   return (
     <Layout title="Register - News App" description="Register News App by Irfan Izudin">
-      <div className="h-full flex flex-col justify-center mt-[80px]">
+      <div className="h-full flex flex-col justify-center mt-[80px] mb-[50px] px-[20px]">
         <h1 className="text-2xl font-bold text-center">Register to News App</h1>
         <form onSubmit={handleRegister}>
           <div className="w-full flex flex-col mt-10 space-y-3">
@@ -106,4 +106,4 @@ const register = () => {
   );
 };
 
-export default register;
+export default Register;

@@ -6,7 +6,7 @@ import Input from "../components/Input";
 import Layout from "../components/Layout";
 import { AppContext } from "../contexts/AppContext";
 
-const login = () => {
+const Login = () => {
   const { input, setInput, showAlert, setShowAlert } = useContext(AppContext);
 
   const router = useRouter();
@@ -39,7 +39,7 @@ const login = () => {
 
   return (
     <Layout title="Login - News App" description="Login News App by Irfan Izudin">
-      <div className="h-full flex flex-col justify-center mt-[80px]">
+      <div className="h-full flex flex-col justify-center items-center mt-[80px] mb-[50px]">
         {showAlert.login && <Alert message="Login failed!" status="failed" />}
         {showAlert.registration && <Alert message="Registration success!" status="success" />}
         {showAlert.logout && <Alert message="Logout success!" status="success" />}
@@ -50,7 +50,7 @@ const login = () => {
 
         <h1 className="text-2xl font-bold text-center">Login to News App</h1>
         <form onSubmit={handleLogin}>
-          <div className="w-[350px] flex flex-col mt-10 space-y-3">
+          <div className="w-[350px] flex flex-col mt-10 space-y-3 px-[20px]">
             <Input
               label="Email"
               name="email"
@@ -73,7 +73,7 @@ const login = () => {
           </div>
         </form>
         <p className="text-sm text-center mt-3">
-          Don't have account ?{" "}
+          Do not have account ?{" "}
           <Link href="/register">
             <a className="text-blue underline">Register Now</a>
           </Link>
@@ -83,4 +83,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;
