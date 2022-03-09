@@ -1,9 +1,10 @@
 import { useRouter } from "next/router";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import Alert from "../components/Alert";
 import Card from "../components/Card";
 import Layout from "../components/Layout";
 import { AppContext } from "../contexts/AppContext";
+import ButtonScrollTop from "../components/ButtonScrollTop";
 
 const Home = ({ posts }) => {
   const { showAlert } = useContext(AppContext);
@@ -19,6 +20,26 @@ const Home = ({ posts }) => {
 
   const items = posts.articles.filter((post) => post.urlToImage !== null);
 
+  const [showBtnScroll, setShowBtnScroll] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.pageYOffset > 300) {
+        setShowBtnScroll(true);
+      } else {
+        setShowBtnScroll(false);
+      }
+    });
+    return () => {};
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <Layout title="News App" description="News App by Irfan Izudin">
       {showAlert.login && <Alert message="Login Success!" status="success" />}
@@ -28,6 +49,7 @@ const Home = ({ posts }) => {
             return <Card key={index} post={item} />;
           })}
       </div>
+      {showBtnScroll && <ButtonScrollTop onClick={scrollToTop} />}
     </Layout>
   );
 };
