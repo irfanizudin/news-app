@@ -4,6 +4,9 @@ const nextConfig = {
   images: {
     domains: ["cdn.cnn.com", "media.cnn.com", "dynaimage.cdn.cnn.com"],
   },
+  experimental: {
+    scrollRestoration: true,
+  },
 };
 
 module.exports = nextConfig;
