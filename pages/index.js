@@ -54,7 +54,7 @@ const Home = ({ posts }) => {
   );
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const res = await fetch("https://saurav.tech/NewsAPI/everything/cnn.json");
   const posts = await res.json();
   return {
