@@ -18,7 +18,7 @@ const Home = ({ posts }) => {
     return () => {};
   }, [router]);
 
-  const items = posts.articles.filter((post) => post.urlToImage !== null);
+  const items = posts.articles.filter((post) => post.urlToImage !== null && post.title !== null);
 
   const [showBtnScroll, setShowBtnScroll] = useState(false);
 
